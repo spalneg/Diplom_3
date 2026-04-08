@@ -21,10 +21,6 @@ class FeedPage(BasePage):
         self.click_element(bp.base_constructor_button)
         return self.wait_for_element_visible(mp.burger_header)
 
-    @allure.step('Получить текст раздела "В работе"')
-    def get_order_in_progress_text(self):
-        return self.get_text(fp.order_in_progress)    
-    
     @allure.step('Получить текст раздела "Выполнено за всё время"')
     def get_order_ever_counter_text(self):
         return self.get_text(fp.completed_ever) 
@@ -32,5 +28,9 @@ class FeedPage(BasePage):
     @allure.step('Получить текст раздела "Выполнено за сегодня"')
     def get_order_today_counter_text(self):
         return self.get_text(fp.completed_today) 
+    
+    @allure.step('Дождаться появления заказа в разделе "В работе"')
+    def wait_for_order_number_in_progress(self, order_number):
+        return self.wait_until_text_contains(fp.order_in_progress, order_number)
     
 

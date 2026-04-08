@@ -1,7 +1,4 @@
 from locators.main_page_locators import MainPageLocators as mp
-from locators.base_page_locators import BasePageLocators as bp
-from locators.feed_page_locators import FeedPageLocators as fp
-from locators.register_page_locators import RegisterPageLocators as rp
 from locators.login_page_locators import LoginPageLocators as lp
 from pages.base_page import BasePage
 import allure
@@ -13,6 +10,7 @@ class LoginPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
 
+    @allure.step('Ввод полученного при регистрации логина и пароля и ожидание загрузки главной страницы')
     def login(self, email, password):
         self.send_keys_to_element(lp.email_field, email)
         self.send_keys_to_element(lp.password_field, password)
