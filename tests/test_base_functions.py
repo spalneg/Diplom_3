@@ -16,21 +16,21 @@ class TestBaseFunctions():
         main_page.open_main_page()
         assert main_page.click_feed_button()    
     
-    allure.title('Проверка появления описания ингредиента по клику на ингредиент')
-    allure.description('Загрузка страницы "Конструктор", клик по кнопке ингредиента с проверкой текста информации о ингредиенте') 
+    @allure.title('Проверка появления описания ингредиента по клику на ингредиент')
+    @allure.description('Загрузка страницы "Конструктор", клик по кнопке ингредиента с проверкой текста информации о ингредиенте') 
     def test_ingredient_description_on_click(self, main_page):
         main_page.open_main_page()
         assert main_page.click_bun_button()
          
-    allure.title('Проверка закрытия окна описания ингредиента по клику на "крестик"')
-    allure.description('Загрузка страницы "Конструктор", клик по кнопке ингредиента, клик по "крестику" в информации о ингредиенте с проверкой закрытия окна') 
+    @allure.title('Проверка закрытия окна описания ингредиента по клику на "крестик"')
+    @allure.description('Загрузка страницы "Конструктор", клик по кнопке ингредиента, клик по "крестику" в информации о ингредиенте с проверкой закрытия окна') 
     def test_ingredient_description_close_button(self, main_page):
         main_page.open_main_page()
         main_page.click_bun_button()
         assert main_page.click_ingredient_close_button()
     
-    allure.title('Проверка увеличения количества ингредиентов в счётчике ингредиента при его добавлении в заказ')
-    allure.description('Загрузка страницы "Конструктор", добавление в заказ булки (добавляются по 2), проверка увеличения счётчика на 2')
+    @allure.title('Проверка увеличения количества ингредиентов в счётчике ингредиента при его добавлении в заказ')
+    @allure.description('Загрузка страницы "Конструктор", добавление в заказ булки (добавляются по 2), проверка увеличения счётчика на 2')
     def test_ingredient_count_increase(self, main_page):
         main_page.open_main_page()
         main_page.add_bun_to_basket()
