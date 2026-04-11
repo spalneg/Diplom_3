@@ -7,9 +7,6 @@ from urls import *
 
 
 class MainPage(BasePage):
-    
-    def __init__(self, driver):
-        super().__init__(driver)
 
     @allure.step('Открытие главной страницы и ожидание загрузки страницы')       
     def open_main_page(self):
@@ -44,9 +41,13 @@ class MainPage(BasePage):
         self.click_element(mp.make_order)
         self.wait_for_element_clickable(mp.order_window_close_button)
 
+    @allure.step('Ожидание появления заказа')
+    def wait_for_order_in_work(self):
+        self.wait_until_text_changes(mp.order_number, '9999')
+
     @allure.step('Ожидание появления заказа и получение номера заказа')
     def wait_for_and_get_order_number(self):
-        self.wait_until_text_changes(mp.order_number, '9999')
+        self.wait_for_order_in_work()
         return self.get_text(mp.order_number)    
     
 

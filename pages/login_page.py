@@ -7,9 +7,6 @@ from urls import *
 
 class LoginPage(BasePage):
     
-    def __init__(self, driver):
-        super().__init__(driver)
-
     @allure.step('Ввод полученного при регистрации логина и пароля и ожидание загрузки главной страницы')
     def login(self, email, password):
         self.send_keys_to_element(lp.email_field, email)

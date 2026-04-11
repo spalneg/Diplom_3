@@ -1,9 +1,6 @@
 import pytest
 from selenium import webdriver
-from pages.main_page import MainPage
-from pages.feed_page import FeedPage
-from pages.login_page import LoginPage
-from pages.register_page import RegisterPage
+from data import *
 
 
 @pytest.fixture(params=["chrome", "firefox"])
@@ -17,17 +14,9 @@ def driver(request):
     driver.quit()
 
 @pytest.fixture
-def main_page(driver):
-    return MainPage(driver)
-
-@pytest.fixture
-def register_page(driver):
-    return RegisterPage(driver)
-
-@pytest.fixture
-def feed_page(driver):
-    return FeedPage(driver)
-
-@pytest.fixture
-def login_page(driver):
-    return LoginPage(driver)
+def user_data():
+    return {
+        'name': 'Burgerman',
+        'email': f'{generate_random_string(10)}@test.test',
+        'password': '654321'
+    }
