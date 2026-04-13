@@ -1,0 +1,18 @@
+from locators.main_page_locators import MainPageLocators as mp
+from locators.login_page_locators import LoginPageLocators as lp
+from pages.base_page import BasePage
+import allure
+from urls import *
+
+
+class LoginPage(BasePage):
+    
+    @allure.step('Ввод полученного при регистрации логина и пароля и ожидание загрузки главной страницы')
+    def login(self, email, password):
+        self.send_keys_to_element(lp.email_field, email)
+        self.send_keys_to_element(lp.password_field, password)
+        self.click_element(lp.enter_button)
+        self.wait_for_element_visible(mp.burger_header)
+
+
+
